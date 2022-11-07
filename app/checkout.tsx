@@ -16,7 +16,7 @@ export default function CheckoutCard() {
 		<div className="flex flex-col bg-white px-5 pt-4 pb-2 rounded-lg h-fit">
 			<div className="flex justify-between items-end py-4">
 				<p className="text-sky-900 font-medium">YOUR BOOKING</p>
-				<a className="text-sm text-sky-500">Details</a>
+				<a className="text-sm text-sky-500 hover:cursor-pointer">Details</a>
 			</div>
 
 			<div className="border-b-2 border-dashed w-full h-0.5" />
