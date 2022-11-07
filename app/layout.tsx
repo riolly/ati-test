@@ -53,7 +53,7 @@ export default function RootLayout({
 						</div>
 					</div>
 
-					<div>{children}</div>
+					<main className="">{children}</main>
 
 					<div className="w-full absolute bottom-0 bg-blue-500 text-white">
 						<div className="container h-8 mx-auto flex justify-between">
@@ -83,5 +83,5 @@ const Button = ({ children }: { children: React.ReactNode }) => {
 };
 
 const Spacer = () => {
-	return <div className="bg-gray-500 grow h-0.5 self-center" />;
+	return <div className="bg-gray-300 grow h-0.5 self-center" />;
 };
