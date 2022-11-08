@@ -1,4 +1,12 @@
-import CheckoutCard from "./checkout";
+import { BiLock as Lock } from "react-icons/bi";
+
+import CheckoutCard, { Spacer } from "./checkout";
+
+import Visa from "public/images/visa.svg";
+import MasterCard from "public/images/mastercard.svg";
+import Amex from "public/images/amex.svg";
+import Jcb from "public/images/jcb.svg";
+import React from "react";
 
 export default function Home() {
 	const payments = [
@@ -28,7 +36,57 @@ export default function Home() {
 						))}
 					</div>
 
-					<div className="col-span-3 bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-r-xl"></div>
+					<div className="col-span-3">
+						<div className="flex flex-col gap-4 px-12 py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-r-xl">
+							<div>
+								<div className="flex justify-between items-end py-4">
+									<p className="uppercase text-sky-900 font-medium">
+										Card details
+									</p>
+									<div className="flex gap-2 items-center text-gray-500 ">
+										<Lock />
+										<p>Secure Server</p>
+									</div>
+								</div>
+								<Spacer className="border-dashed" />
+							</div>
+
+							<div className="grid grid-cols-6 gap-x-8 gap-y-4 gutter child:w-full">
+								<div className="col-span-3 flex flex-col">
+									<label htmlFor="card-number">Card Number *</label>
+									<input
+										id="card-number"
+										type="number"
+										className="border rounded-lg h-12 px-4 outline-sky-200"
+									/>
+								</div>
+
+								<div className="col-span-3">
+									<label htmlFor="payment-methods" className="invisible">
+										Payment methods
+									</label>
+									<div id="payment-methods" className="flex gap-3">
+										<PaymentMethodButton>
+											<Visa />
+										</PaymentMethodButton>
+										<PaymentMethodButton>
+											<MasterCard />
+										</PaymentMethodButton>
+										<PaymentMethodButton>
+											<Amex />
+										</PaymentMethodButton>
+										<PaymentMethodButton>
+											<Jcb />
+										</PaymentMethodButton>
+									</div>
+								</div>
+
+								<div className="col-span-2"></div>
+								<div className="col-span-2"></div>
+								<div className="col-span-2"></div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -55,6 +113,14 @@ function Button({
 			}`}
 		>
 			<p className="font-medium text-lg text-left">{children}</p>
+		</button>
+	);
+}
+
+function PaymentMethodButton({ children }: { children: React.ReactNode }) {
+	return (
+		<button className="bg-gray-200 rounded child:h-12 focus:ring ring-offset-2 ring-sky-200">
+			{children}
 		</button>
 	);
 }
