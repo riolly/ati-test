@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+// import plugin from "tailwindcss/plugin";
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
 	content: [
 		"./app/**/*.{js,ts,jsx,tsx}",
@@ -8,5 +11,10 @@ module.exports = {
 	theme: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [
+		plugin(function ({ addVariant }) {
+			addVariant("child", "& > *");
+			addVariant("child-hover", "& > *:hover");
+		}),
+	],
 };
