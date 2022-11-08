@@ -30,9 +30,9 @@ export default function Home() {
 
 	return (
 		<div className="container mx-auto w-full py-6 grid grid-cols-9 gap-8">
-			<div className="col-span-7">
+			<div className="col-span-full lg:col-span-7">
 				<div className="w-full grid grid-cols-4">
-					<div className="col-span-1 bg-gray-50 flex flex-col px-12 py-6 items-start gap-2 rounded-l-xl">
+					<div className="col-span-1 hidden lg:flex flex-col bg-gray-50  px-12 py-6 items-start gap-2 rounded-l-xl">
 						{payments.map((method: string, i) => (
 							<Button key={i} isActive={i === 0}>
 								{method}
@@ -40,8 +40,8 @@ export default function Home() {
 						))}
 					</div>
 
-					<div className="col-span-3">
-						<div className="flex flex-col gap-4 px-12 py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-r-xl">
+					<div className="col-span-full lg:col-span-3">
+						<div className="flex flex-col gap-4 px-12 py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-l-xl lg:rounded-l-none rounded-r-xl">
 							<Section title="Card details">
 								<div className="flex gap-2 items-center text-gray-500 ">
 									<Lock />
@@ -251,7 +251,7 @@ export default function Home() {
 				</div>
 			</div>
 
-			<div className="col-span-2">
+			<div className="hidden lg:block col-span-2">
 				<CheckoutCard />
 			</div>
 		</div>
