@@ -2,7 +2,7 @@ import {
 	AiFillQuestionCircle as QuestionCircle,
 	AiOutlineExclamationCircle as ExclamationCircle,
 } from "react-icons/ai";
-import { Section, Spacer } from "../components";
+import { Section, Spacer } from ".";
 
 export default function SummarySection() {
 	return (
