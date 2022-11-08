@@ -174,7 +174,7 @@ export default function Home() {
 								<div className="grid grid-cols-2 gap-x-8">
 									<div className="flex flex-col gap-2">
 										<span className="flex justify-between items-center text-gray-500">
-											<label htmlFor="redeem-point">Redeem point</label>
+											<p>Redeem point</p>
 											<QuestionCircle />
 										</span>
 										<span className="flex items-center gap-4 text-sky-500">
@@ -183,9 +183,9 @@ export default function Home() {
 												type="checkbox"
 												className="ml-2"
 											/>
-											<p>
+											<label htmlFor="redeem-point">
 												I&apos;d like to redeem points from this credit card
-											</p>
+											</label>
 										</span>
 									</div>
 
