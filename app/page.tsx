@@ -177,9 +177,13 @@ export default function Home() {
 											<label htmlFor="redeem-point">Redeem point</label>
 											<QuestionCircle />
 										</span>
-										<span className="flex items-start gap-4 text-sky-500">
-											<input id="redeem-point" type="checkbox" />
-											<p className="text-xs">
+										<span className="flex items-center gap-4 text-sky-500">
+											<input
+												id="redeem-point"
+												type="checkbox"
+												className="ml-2"
+											/>
+											<p>
 												I&apos;d like to redeem points from this credit card
 											</p>
 										</span>
