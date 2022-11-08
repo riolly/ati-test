@@ -1,3 +1,4 @@
+import React from "react";
 import { BiLock as Lock } from "react-icons/bi";
 
 import CheckoutCard, { Spacer } from "./checkout";
@@ -6,7 +7,6 @@ import Visa from "public/images/visa.svg";
 import MasterCard from "public/images/mastercard.svg";
 import Amex from "public/images/amex.svg";
 import Jcb from "public/images/jcb.svg";
-import React from "react";
 
 export default function Home() {
 	const payments = [
@@ -53,11 +53,11 @@ export default function Home() {
 
 							<div className="grid grid-cols-6 gap-x-8 gap-y-4 gutter child:w-full">
 								<div className="col-span-3 flex flex-col">
-									<label htmlFor="card-number">Card Number *</label>
-									<input
-										id="card-number"
+									<Input
+										id="credit-card"
+										label="Credit Card"
 										type="number"
-										className="border rounded-lg h-12 px-4 outline-sky-200"
+										required
 									/>
 								</div>
 
@@ -81,9 +81,33 @@ export default function Home() {
 									</div>
 								</div>
 
-								<div className="col-span-2"></div>
-								<div className="col-span-2"></div>
-								<div className="col-span-2"></div>
+								<div className="col-span-2">
+									<Input
+										id="expired-month"
+										label="Expiration Date"
+										type="date"
+										placeholder="Month"
+										required
+									/>
+								</div>
+								<div className="col-span-2">
+									<Input
+										id="expired-year"
+										type="date"
+										placeholder="Year"
+										required
+									/>
+								</div>
+								<div className="col-span-2">
+									<Input
+										id="cvc"
+										label="CVC"
+										type="number"
+										placeholder="***"
+										required
+										maxLength={3}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -122,5 +146,28 @@ function PaymentMethodButton({ children }: { children: React.ReactNode }) {
 		<button className="bg-gray-200 rounded child:h-12 focus:ring ring-offset-2 ring-sky-200">
 			{children}
 		</button>
+	);
+}
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+	label?: string;
+}
+
+function Input({ id, label, required, className, ...props }: InputProps) {
+	return (
+		<>
+			<label htmlFor={id} className={!label ? "invisible" : ""}>
+				{label ?? id}
+				{required ? " *" : ""}
+			</label>
+			<input
+				id={id}
+				required={required}
+				className={`border rounded-lg h-12 px-4 outline-sky-200 w-full ${
+					className ?? ""
+				}`}
+				{...props}
+			/>
+		</>
 	);
 }
