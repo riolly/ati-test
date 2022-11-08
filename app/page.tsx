@@ -41,7 +41,7 @@ export default function Home() {
 					</div>
 
 					<div className="col-span-full lg:col-span-3">
-						<div className="flex flex-col gap-4 px-12 py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-l-xl lg:rounded-l-none rounded-r-xl">
+						<div className="flex flex-col gap-4 px-4 lg:px-12 lg:py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-l-xl lg:rounded-l-none rounded-r-xl">
 							<Section title="Card details">
 								<div className="flex gap-2 items-center text-gray-500 ">
 									<Lock />
@@ -51,14 +51,17 @@ export default function Home() {
 
 							<div className="grid grid-cols-6 gap-x-8 gap-y-4 child:w-full">
 								<Input
-									wrapperClassName="col-span-3"
+									wrapperClassName="col-span-full lg:col-span-3"
 									id="credit-card"
 									label="Credit Card"
 									type="number"
 									required
 								/>
-								<div className="col-span-3">
-									<label htmlFor="payment-methods" className="invisible">
+								<div className="col-span-full lg:col-span-3 ">
+									<label
+										htmlFor="payment-methods"
+										className="hidden lg:block lg:invisible"
+									>
 										Payment methods
 									</label>
 									<div id="payment-methods" className="flex gap-3">
@@ -78,7 +81,7 @@ export default function Home() {
 								</div>
 
 								<Input
-									wrapperClassName="col-span-2"
+									wrapperClassName="col-span-3 lg:col-span-2"
 									id="expired-month"
 									label="Expiration Date"
 									type="date"
@@ -86,14 +89,14 @@ export default function Home() {
 									required
 								/>
 								<Input
-									wrapperClassName="col-span-2"
+									wrapperClassName="col-span-3 lg:col-span-2"
 									id="expired-year"
 									type="date"
 									placeholder="Year"
 									required
 								/>
 								<Input
-									wrapperClassName="col-span-2"
+									wrapperClassName="col-span-full lg:col-span-2"
 									id="cvc"
 									label="CVC"
 									type="number"
@@ -107,7 +110,7 @@ export default function Home() {
 
 							<div className="grid grid-cols-6 gap-x-8 gap-y-4 gutter child:w-full">
 								<Input
-									wrapperClassName="col-span-3"
+									wrapperClassName="col-span-full lg:col-span-3"
 									id="card-holder-name"
 									label="Card Holder Name"
 									type="text"
@@ -116,13 +119,13 @@ export default function Home() {
 								/>
 
 								<Input
-									wrapperClassName="col-span-4"
+									wrapperClassName="col-span-full lg:col-span-4"
 									id="address"
 									label="Address"
 									type="text"
 									placeholder="Jl. Jenderal Sudirman Kav.10-11"
 								/>
-								<div className="col-span-2">
+								<div className="col-span-3 lg:col-span-2">
 									<label htmlFor="country">Country</label>
 									<select
 										id="country"
@@ -135,19 +138,19 @@ export default function Home() {
 								</div>
 
 								<Input
-									wrapperClassName="col-span-2"
+									wrapperClassName="col-span-3 lg:col-span-2"
 									id="province"
 									label="Province/State"
 									placeholder="DKI Jakarta"
 								/>
 								<Input
-									wrapperClassName="col-span-2"
+									wrapperClassName="col-span-3 lg:col-span-2"
 									id="city"
 									label="City"
 									placeholder="Jakarta"
 								/>
 								<Input
-									wrapperClassName="col-span-2"
+									wrapperClassName="col-span-3 lg:col-span-2"
 									id="zip-code"
 									label="ZIP Code"
 									placeholder="10202"
@@ -155,13 +158,13 @@ export default function Home() {
 								/>
 
 								<Input
-									wrapperClassName="col-span-3"
+									wrapperClassName="col-span-full lg:col-span-3"
 									id="email"
 									label="Email"
 									placeholder="example@email.com"
 								/>
 								<Input
-									wrapperClassName="col-span-3"
+									wrapperClassName="col-span-full lg:col-span-3"
 									id="phone"
 									label="Phone"
 									placeholder="0812 3456 6890"
@@ -171,8 +174,8 @@ export default function Home() {
 							<Section />
 
 							<div className="flex flex-col gap-4">
-								<div className="grid grid-cols-2 gap-x-8">
-									<div className="flex flex-col gap-2">
+								<div className="grid grid-cols-2 gap-x-8 gap-y-4">
+									<div className="col-span-full lg:col-span-1 flex flex-col gap-2">
 										<span className="flex justify-between items-center text-gray-500">
 											<p>Redeem point</p>
 											<QuestionCircle />
@@ -183,13 +186,16 @@ export default function Home() {
 												type="checkbox"
 												className="ml-2"
 											/>
-											<label htmlFor="redeem-point">
+											<label
+												htmlFor="redeem-point"
+												className="text-sm lg:text-base"
+											>
 												I&apos;d like to redeem points from this credit card
 											</label>
 										</span>
 									</div>
 
-									<div className="">
+									<div className="col-span-full lg:col-span-1">
 										<span className="flex justify-between items-center text-gray-500">
 											<label htmlFor="installment">Installment Plan</label>
 											<QuestionCircle />
@@ -237,11 +243,11 @@ export default function Home() {
 									</div>
 								</div>
 
-								<div className="grid grid-cols-2 gap-y-6">
+								<div className="grid grid-cols-2 gap-y-6 mb-6 lg:mb-0">
 									<button className="col-span-full h-12 text-sky-500 hover:border-solid transition-all hover:text-sky-700 border-2 rounded border-dashed border-sky-500 font-medium focus:ring ring-offset-2 ring-sky-200">
 										Use Promo Code
 									</button>
-									<button className="col-span-1 h-12 col-start-2 w-full bg-sky-900 text-white rounded-lg font-semibold focus:ring ring-offset-2 ring-sky-200 hover:bg-sky-500 transition-colors hover:text-white">
+									<button className="col-span-full lg:col-span-1 h-12 lg:col-start-2 w-full bg-sky-900 text-white rounded-lg font-semibold focus:ring ring-offset-2 ring-sky-200 hover:bg-sky-500 transition-colors hover:text-white">
 										Pay Now
 									</button>
 								</div>
