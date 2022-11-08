@@ -38,28 +38,21 @@ export default function Home() {
 
 					<div className="col-span-3">
 						<div className="flex flex-col gap-4 px-12 py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-r-xl">
-							<div>
-								<div className="flex justify-between items-end py-4">
-									<p className="uppercase text-sky-900 font-medium">
-										Card details
-									</p>
-									<div className="flex gap-2 items-center text-gray-500 ">
-										<Lock />
-										<p>Secure Server</p>
-									</div>
+							<Section title="Card details">
+								<div className="flex gap-2 items-center text-gray-500 ">
+									<Lock />
+									<p>Secure Server</p>
 								</div>
-								<Spacer className="border-dashed" />
-							</div>
+							</Section>
 
-							<div className="grid grid-cols-6 gap-x-8 gap-y-4 gutter child:w-full">
-								<div className="col-span-3 flex flex-col">
-									<Input
-										id="credit-card"
-										label="Credit Card"
-										type="number"
-										required
-									/>
-								</div>
+							<div className="grid grid-cols-6 gap-x-8 gap-y-4 child:w-full">
+								<Input
+									wrapperClassName="col-span-3"
+									id="credit-card"
+									label="Credit Card"
+									type="number"
+									required
+								/>
 
 								<div className="col-span-3">
 									<label htmlFor="payment-methods" className="invisible">
@@ -81,34 +74,35 @@ export default function Home() {
 									</div>
 								</div>
 
-								<div className="col-span-2">
-									<Input
-										id="expired-month"
-										label="Expiration Date"
-										type="date"
-										placeholder="Month"
-										required
-									/>
-								</div>
-								<div className="col-span-2">
-									<Input
-										id="expired-year"
-										type="date"
-										placeholder="Year"
-										required
-									/>
-								</div>
-								<div className="col-span-2">
-									<Input
-										id="cvc"
-										label="CVC"
-										type="number"
-										placeholder="***"
-										required
-										maxLength={3}
-									/>
-								</div>
+								<Input
+									wrapperClassName="col-span-2"
+									id="expired-month"
+									label="Expiration Date"
+									type="date"
+									placeholder="Month"
+									required
+								/>
+								<Input
+									wrapperClassName="col-span-2"
+									id="expired-year"
+									type="date"
+									placeholder="Year"
+									required
+								/>
+								<Input
+									wrapperClassName="col-span-2"
+									id="cvc"
+									label="CVC"
+									type="number"
+									placeholder="***"
+									required
+									maxLength={3}
+								/>
 							</div>
+
+							<Section title="Billing Information" />
+
+							<div className="grid grid-cols-6 gap-x-8 gap-y-4 gutter child:w-full"></div>
 						</div>
 					</div>
 				</div>
@@ -151,11 +145,19 @@ function PaymentMethodButton({ children }: { children: React.ReactNode }) {
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
+	wrapperClassName?: string;
 }
 
-function Input({ id, label, required, className, ...props }: InputProps) {
+function Input({
+	id,
+	label,
+	required,
+	className,
+	wrapperClassName,
+	...props
+}: InputProps) {
 	return (
-		<>
+		<div className={wrapperClassName}>
 			<label htmlFor={id} className={!label ? "invisible" : ""}>
 				{label ?? id}
 				{required ? " *" : ""}
@@ -168,6 +170,24 @@ function Input({ id, label, required, className, ...props }: InputProps) {
 				}`}
 				{...props}
 			/>
-		</>
+		</div>
+	);
+}
+
+function Section({
+	title,
+	children,
+}: {
+	title: string;
+	children?: React.ReactNode;
+}) {
+	return (
+		<div>
+			<div className="flex justify-between items-end py-4">
+				<p className="uppercase text-sky-900 font-medium">{title}</p>
+				{children}
+			</div>
+			<Spacer className="border-dashed" />
+		</div>
 	);
 }
