@@ -240,13 +240,17 @@ function Section({
 	title,
 	children,
 }: {
-	title: string;
+	title?: string;
 	children?: React.ReactNode;
 }) {
 	return (
 		<div className="mt-4">
-			<div className="flex justify-between items-end py-4">
-				<p className="uppercase text-sky-900 font-medium">{title}</p>
+			<div
+				className={`flex justify-between items-end ${title ? "py-4" : "pb-4"}`}
+			>
+				<p className={title ? "uppercase text-sky-900 font-medium" : "hidden"}>
+					{title}
+				</p>
 				{children}
 			</div>
 			<Spacer className="border-dashed" />
