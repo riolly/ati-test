@@ -2,6 +2,8 @@ import { AiOutlineExclamationCircle as ExclamationCircle } from "react-icons/ai"
 import { BsCalendar4Week as Calendar } from "react-icons/bs";
 import { MdOutlineFlight as Flight } from "react-icons/md";
 
+import { Spacer } from "../components";
+
 export default function CheckoutCard() {
 	const data = {
 		name: "Mr. John Doe",
@@ -56,10 +58,6 @@ export default function CheckoutCard() {
 			</DetailPart>
 		</div>
 	);
-}
-
-export function Spacer({ className }: { className?: string }) {
-	return <div className={`border-b-2 w-full h-0.5 ${className ?? ""}`} />;
 }
 
 function DetailPart({
