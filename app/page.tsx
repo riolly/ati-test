@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { BiLock as Lock } from "react-icons/bi";
 
