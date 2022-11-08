@@ -18,8 +18,8 @@ export default function CheckoutCard() {
 				<p className="text-sky-900 font-medium">YOUR BOOKING</p>
 				<a className="text-sm text-sky-500 hover:cursor-pointer">Details</a>
 			</div>
+			<Spacer className="border-dashed" />
 
-			<div className="border-b-2 border-dashed w-full h-0.5" />
 			<div className="flex flex-col py-4 gap-2">
 				<p className="font-medium">LIST OF PASSENGER(S)</p>
 				<div className="flex justify-between">
@@ -27,8 +27,8 @@ export default function CheckoutCard() {
 					<p>{data.maturity}</p>
 				</div>
 			</div>
+			<Spacer />
 
-			<div className="border-b-2 w-full h-0.5" />
 			<div className="py-4 flex flex-col gap-2">
 				<p className="font-medium">FLIGHT</p>
 				<span className="flex gap-2 items-center">
@@ -45,8 +45,8 @@ export default function CheckoutCard() {
 					<p>{data.date}</p>
 				</span>
 			</div>
+			<Spacer />
 
-			<div className="border-b-2 w-full h-0.5" />
 			<div className="py-4 flex flex-col">
 				<p className="font-medium">PRICE</p>
 				<div className="flex justify-between items-end">
@@ -59,4 +59,8 @@ export default function CheckoutCard() {
 			</div>
 		</div>
 	);
+}
+
+export function Spacer({ className }: { className?: string }) {
+	return <div className={`border-b-2 w-full h-0.5 ${className ?? ""}`} />;
 }
