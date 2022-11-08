@@ -10,7 +10,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className="">
+		<>
 			<div className="w-full bg-white">
 				<div className="container mx-auto grid grid-cols-9 gap-8 ">
 					<div className="hidden lg:block col-span-2 py-2">
@@ -63,7 +63,7 @@ export default function RootLayout({
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
