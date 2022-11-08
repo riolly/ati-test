@@ -18,10 +18,9 @@ export default function Home() {
 
 	return (
 		<div className="container mx-auto w-full py-6 grid grid-cols-9 gap-8">
-			<div className="col-span-7 rounded-xl">
-				{/* TODO: rounded is not working */}
-				<div className="bg-white w-full grid grid-cols-4">
-					<div className="col-span-1 bg-gray-50 flex flex-col px-12 py-6 items-start gap-2">
+			<div className="col-span-7">
+				<div className="w-full grid grid-cols-4">
+					<div className="col-span-1 bg-gray-50 flex flex-col px-12 py-6 items-start gap-2 rounded-l-xl">
 						{payments.map((method: string, i) => (
 							<Button key={i} isActive={i === 0}>
 								{method}
@@ -29,7 +28,7 @@ export default function Home() {
 						))}
 					</div>
 
-					<div className="col-span-3 bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)]"></div>
+					<div className="col-span-3 bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-r-xl"></div>
 				</div>
 			</div>
 
