@@ -73,7 +73,10 @@ export default function SummarySection() {
 					<button className="col-span-full h-12 text-sky-500 hover:border-solid transition-all hover:text-sky-700 border-2 rounded border-dashed border-sky-500 font-medium focus:ring ring-offset-2 ring-sky-200">
 						Use Promo Code
 					</button>
-					<button className="col-span-full lg:col-span-1 h-12 lg:col-start-2 w-full bg-sky-900 text-white rounded-lg font-semibold focus:ring ring-offset-2 ring-sky-200 hover:bg-sky-500 transition-colors hover:text-white">
+					<button
+						type="submit"
+						className="col-span-full lg:col-span-1 h-12 lg:col-start-2 w-full bg-sky-900 text-white rounded-lg font-semibold focus:ring ring-offset-2 ring-sky-200 hover:bg-sky-500 transition-colors hover:text-white"
+					>
 						Pay Now
 					</button>
 				</div>
