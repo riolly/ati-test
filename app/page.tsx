@@ -226,7 +226,7 @@ export default function Home() {
 									</div>
 									<Spacer />
 									<div className="flex justify-between text-gray-700">
-										<p>Service Fee</p>
+										<p>Total Price</p>
 										<span className="flex gap-2 items-center h-fit">
 											<ExclamationCircle className="text-red-500" />
 											<p className="font-bold text-center pt-2">
