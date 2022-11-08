@@ -53,7 +53,6 @@ export default function Home() {
 									type="number"
 									required
 								/>
-
 								<div className="col-span-3">
 									<label htmlFor="payment-methods" className="invisible">
 										Payment methods
@@ -102,7 +101,70 @@ export default function Home() {
 
 							<Section title="Billing Information" />
 
-							<div className="grid grid-cols-6 gap-x-8 gap-y-4 gutter child:w-full"></div>
+							<div className="grid grid-cols-6 gap-x-8 gap-y-4 gutter child:w-full">
+								<Input
+									wrapperClassName="col-span-3"
+									id="card-holder-name"
+									label="Card Holder Name"
+									type="text"
+									placeholder="John Doe"
+									required
+								/>
+
+								<Input
+									wrapperClassName="col-span-4"
+									id="address"
+									label="Address"
+									type="text"
+									placeholder="Jl. Jenderal Sudirman Kav.10-11"
+								/>
+								<div className="col-span-2">
+									<label htmlFor="country">Country</label>
+									<select
+										id="country"
+										className="w-full h-12 rounded-lg px-2 bg-white border-[1px] outline-sky-300"
+									>
+										<option>Indonesia</option>
+										<option>United States</option>
+										<option>United Kingdom</option>
+									</select>
+								</div>
+
+								<Input
+									wrapperClassName="col-span-2"
+									id="province"
+									label="Province/State"
+									placeholder="DKI Jakarta"
+								/>
+								<Input
+									wrapperClassName="col-span-2"
+									id="city"
+									label="City"
+									placeholder="Jakarta"
+								/>
+								<Input
+									wrapperClassName="col-span-2"
+									id="zip-code"
+									label="ZIP Code"
+									placeholder="10202"
+									type="number"
+								/>
+
+								<Input
+									wrapperClassName="col-span-3"
+									id="email"
+									label="Email"
+									placeholder="example@email.com"
+								/>
+								<Input
+									wrapperClassName="col-span-3"
+									id="phone"
+									label="Phone"
+									placeholder="0812 3456 6890"
+								/>
+
+								<Spacer className="border-dashed col-span-full mt-4" />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -182,7 +244,7 @@ function Section({
 	children?: React.ReactNode;
 }) {
 	return (
-		<div>
+		<div className="mt-4">
 			<div className="flex justify-between items-end py-4">
 				<p className="uppercase text-sky-900 font-medium">{title}</p>
 				{children}
