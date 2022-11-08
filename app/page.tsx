@@ -238,10 +238,10 @@ export default function Home() {
 								</div>
 
 								<div className="grid grid-cols-2 gap-y-6">
-									<button className="col-span-full h-12 text-sky-500 border-2 rounded border-dashed border-sky-500 font-medium">
+									<button className="col-span-full h-12 text-sky-500 hover:border-solid transition-all hover:text-sky-700 border-2 rounded border-dashed border-sky-500 font-medium focus:ring ring-offset-2 ring-sky-200">
 										Use Promo Code
 									</button>
-									<button className="col-span-1 h-12 col-start-2 w-full bg-sky-900 text-white rounded-lg font-semibold">
+									<button className="col-span-1 h-12 col-start-2 w-full bg-sky-900 text-white rounded-lg font-semibold focus:ring ring-offset-2 ring-sky-200 hover:bg-sky-500 transition-colors hover:text-white">
 										Pay Now
 									</button>
 								</div>
@@ -267,7 +267,7 @@ function Button({
 }) {
 	return (
 		<button
-			className={`py-2 px-4 w-full hover:rounded-lg hover:bg-sky-300 hover:text-white ${
+			className={`py-2 px-4 w-full hover:rounded-lg transition-all focus:rounded-lg focus:ring ring-offset-2 ring-sky-200 hover:bg-sky-300 hover:text-white ${
 				isActive
 					? "text-sky-500 border-b-[3px] border-b-sky-500"
 					: "text-sky-900"
