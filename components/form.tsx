@@ -22,6 +22,14 @@ import Jcb from "public/images/jcb.svg";
 export default function FormPayment() {
 	type Inputs = {
 		creditCard: number;
+		cvc: number;
+		name: string;
+		address: string;
+		province: string;
+		city: string;
+		zipCode: number;
+		email: string;
+		phone: number;
 	};
 
 	const schema = yup
@@ -30,45 +38,30 @@ export default function FormPayment() {
 			creditCard: yup
 				.string()
 				.required()
-				.matches(/^[0-9]+$/, "Must be only digits")
-				.min(16, "Not valid credit card number")
-				.max(16, "Not valid credit card number")
+				.length(19, "Not valid credit card number")
 				.label("Credit card"),
 			cvc: yup
 				.string()
 				.required()
-				.matches(/^[0-9]+$/, "Must be only digits")
-				.min(3, "Not valid cvc number")
-				.max(3, "Not valid cvc number")
+				.length(3, "Not valid CVC number")
 				.label("CVC"),
+			expiredDate: yup
+				.date()
+				.transform((ori, formattedDate) => {
+					if (formattedDate === "") return null;
+					return ori;
+				})
+				.nullable()
+				.required()
+				.label("Expired date"),
 			name: yup.string().required().label("Name"),
-			expiredMonth: yup
-				.date()
-				.transform((ori, formattedDate) => {
-					if (formattedDate === "") return null;
-					return ori;
-				})
-				.nullable()
-				.required()
-				.label("Expired month"),
-			expiredYear: yup
-				.date()
-				.transform((ori, formattedDate) => {
-					if (formattedDate === "") return null;
-					return ori;
-				})
-				.nullable()
-				.required()
-				.label("Expired year"),
 		})
 		.required();
 
-	const methods = useForm<Inputs>({
+	const formMethods = useForm<Inputs>({
 		resolver: yupResolver(schema),
 		mode: "onTouched",
 	});
-
-	const { handleSubmit } = methods;
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
