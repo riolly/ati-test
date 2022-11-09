@@ -226,15 +226,16 @@ export default function FormPayment() {
 
 							<Input
 								wrapperClassName="col-span-full lg:col-span-3"
+								type="email"
 								name="email"
 								label="Email"
 								placeholder="example@email.com"
 							/>
 							<Input
 								wrapperClassName="col-span-full lg:col-span-3"
+								type="tel"
 								name="phone"
 								label="Phone"
-								type="number"
 								placeholder="0812 3456 6890"
 							/>
 						</div>
