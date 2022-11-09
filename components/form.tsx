@@ -63,7 +63,7 @@ export default function FormPayment() {
 		mode: "onTouched",
 	});
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<Inputs> = (data) => alert(JSON.stringify(data));
 
 	// TODO: non number char still show up and then replaced.
 	// const formatNumberOnKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
