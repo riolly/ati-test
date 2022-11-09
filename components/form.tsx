@@ -1,6 +1,5 @@
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import {
-	FieldErrors,
 	useForm,
 	FormProvider,
 	useFormContext,
@@ -73,6 +72,38 @@ export default function FormPayment() {
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
+	// TODO: non number char still show up and then replaced.
+	// const formatNumberOnKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
+	// 	const target = e.target as HTMLInputElement;
+	// 	const val = target.value;
+	// 	const len = val.length;
+
+	// 	if (len !== 19) {
+	// 		target.value = val.replace(/[^0-9]/g, "").replace(/(.{4})/g, "$1 ");
+	// 	}
+
+	// 	if (e.key === "Backspace" && val[len - 1] === " ") {
+	// 		target.value = val.slice(0, -1);
+	// 	}
+	// };
+
+	const formatNumber = (e: KeyboardEvent<HTMLInputElement>) => {
+		const target = e.target as HTMLInputElement;
+		const val = target.value;
+		const len = val.length;
+
+		if (e.key === "Backspace") {
+			if (val[len - 2] === " ") {
+				target.value = val.slice(0, -1);
+			}
+		} else if (/[^0-9]/g.test(e.key)) {
+			// TODO: command ie. ctrl+r also prevented
+			e.preventDefault();
+		} else if (len <= 18) {
+			target.value = val.replace(/[^0-9]/g, "").replace(/(.{4})/g, "$1 ");
+		}
+	};
+
 	return (
 		<div className="col-span-full lg:col-span-3">
 			<div className="flex flex-col gap-4 px-4 lg:px-12 lg:py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-l-xl lg:rounded-l-none rounded-r-xl">
@@ -90,8 +121,13 @@ export default function FormPayment() {
 								wrapperClassName="col-span-full lg:col-span-3"
 								name="creditCard"
 								label="Credit Card"
-								type="number"
+								type="text"
+								inputMode="numeric"
+								maxLength={19}
 								required
+								placeholder="XXXX XXXX XXXX XXXX"
+								// onKeyUp={formatNumberOnKeyUp}
+								onKeyDown={formatNumber}
 							/>
 							<div className="col-span-full lg:col-span-3 ">
 								<label
@@ -135,10 +171,12 @@ export default function FormPayment() {
 								wrapperClassName="col-span-full lg:col-span-2"
 								name="cvc"
 								label="CVC"
-								type="number"
+								type="text"
 								placeholder="***"
-								required
 								maxLength={3}
+								inputMode="numeric"
+								required
+								onKeyDown={formatNumber}
 							/>
 						</div>
 
