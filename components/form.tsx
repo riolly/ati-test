@@ -99,14 +99,15 @@ export default function FormPayment() {
 
 	return (
 		<div className="col-span-full lg:col-span-3">
+			<div className="flex flex-col gap-4 px-4 lg:px-12 lg:pb-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-l-xl lg:rounded-l-none rounded-r-xl">
 				<FormProvider {...formMethods}>
 					<form onSubmit={formMethods.handleSubmit(onSubmit)}>
-				<Section title="Card details">
-					<div className="flex gap-2 items-center text-gray-500 ">
-						<Lock />
-						<p>Secure Server</p>
-					</div>
-				</Section>
+						<Section title="Card details">
+							<div className="flex gap-2 items-center text-gray-500 ">
+								<Lock />
+								<p>Secure Server</p>
+							</div>
+						</Section>
 
 						<div className="grid grid-cols-6 gap-x-8 gap-y-4 child:w-full">
 							<Input
@@ -243,7 +244,7 @@ export default function FormPayment() {
 
 function PaymentMethodButton({ children }: { children: React.ReactNode }) {
 	return (
-		<button className="bg-gray-200 rounded child:h-12 focus:ring ring-offset-2 ring-sky-200">
+		<button className="bg-gray-200 rounded child:h-10 focus:ring ring-offset-2 ring-sky-200">
 			{children}
 		</button>
 	);

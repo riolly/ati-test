@@ -10,11 +10,15 @@ export function Section({
 	children?: React.ReactNode;
 }) {
 	return (
-		<div className="mt-4">
+		<div className="py-4">
 			<div
 				className={`flex justify-between items-end ${title ? "py-4" : "pb-4"}`}
 			>
-				<p className={title ? "uppercase text-sky-900 font-medium" : "hidden"}>
+				<p
+					className={
+						title ? "uppercase text-sky-900 font-medium text-lg" : "hidden"
+					}
+				>
 					{title}
 				</p>
 				{children}
