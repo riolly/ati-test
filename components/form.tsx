@@ -118,7 +118,7 @@ export default function FormPayment() {
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="grid grid-cols-6 gap-x-8 gap-y-4 child:w-full">
 							<Input
-								wrapperClassName="col-span-full lg:col-span-3"
+								wrapperClassName="col-span-full lg:col-span-3 order-0"
 								name="creditCard"
 								label="Credit Card"
 								type="text"
@@ -129,13 +129,34 @@ export default function FormPayment() {
 								// onKeyUp={formatNumberOnKeyUp}
 								onKeyDown={formatNumber}
 							/>
-							<div className="col-span-full lg:col-span-3 ">
-								<label
+
+							<Input
+								wrapperClassName="col-span-3 lg:col-span-2 order-2"
+								name="expiredDate"
+								label="Expiration Date"
+								type="month"
+								placeholder="month/Year"
+								required
+							/>
+							<Input
+								wrapperClassName="col-span-3 lg:col-span-1 order-3"
+								name="cvc"
+								label="CVC"
+								type="text"
+								placeholder="***"
+								inputMode="numeric"
+								maxLength={3}
+								required
+								onKeyDown={formatNumber}
+							/>
+
+							<div className="col-span-full lg:col-span-3 order-1 lg:order-3">
+								{/* <label
 									htmlFor="paymentMethod"
 									className="hidden lg:block lg:invisible"
 								>
 									Payment methods
-								</label>
+								</label> */}
 								<div id="payment-methods" className="flex gap-3">
 									<PaymentMethodButton>
 										<Visa />
@@ -151,33 +172,6 @@ export default function FormPayment() {
 									</PaymentMethodButton>
 								</div>
 							</div>
-
-							<Input
-								wrapperClassName="col-span-3 lg:col-span-2"
-								name="expiredMonth"
-								label="Expiration Date"
-								type="date"
-								placeholder="Month"
-								required
-							/>
-							<Input
-								wrapperClassName="col-span-3 lg:col-span-2"
-								name="expiredYear"
-								type="date"
-								placeholder="Year"
-								required
-							/>
-							<Input
-								wrapperClassName="col-span-full lg:col-span-2"
-								name="cvc"
-								label="CVC"
-								type="text"
-								placeholder="***"
-								maxLength={3}
-								inputMode="numeric"
-								required
-								onKeyDown={formatNumber}
-							/>
 						</div>
 
 						<Section title="Billing Information" />
