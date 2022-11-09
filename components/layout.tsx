@@ -1,8 +1,9 @@
+import Image from "next/image";
 import React from "react";
 import { BsCheckCircle as CheckCircle } from "react-icons/bs/";
 import { MdOutlineAlarmOn as Alarm } from "react-icons/md/";
 
-import GarudaIndonesia from "../public/images/garuda-indonesia.svg";
+import GarudaIndonesia from "../public/images/garuda-indonesia.png";
 
 export default function RootLayout({
 	children,
@@ -14,7 +15,11 @@ export default function RootLayout({
 			<div className="w-full bg-white">
 				<div className="container mx-auto grid grid-cols-9 gap-8 ">
 					<div className="hidden lg:block col-span-2 py-2">
-						<GarudaIndonesia className="mx-auto" />
+						<Image
+							src={GarudaIndonesia}
+							alt="Garuda Indonesia Logo"
+							className="h-10 w-auto mx-auto"
+						/>
 					</div>
 
 					<div className="col-span-full lg:col-span-5 flex lg:px-16 py-4 lg:py-0">
