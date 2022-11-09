@@ -96,7 +96,7 @@ export default function FormPayment() {
 			if (val[len - 2] === " ") {
 				target.value = val.slice(0, -1);
 			}
-		} else if (/[^0-9]/g.test(e.key)) {
+		} else if (/[^0-9]/g.test(e.key) && e.key !== "Tab") {
 			// TODO: command ie. ctrl+r also prevented
 			e.preventDefault();
 		} else if (len <= 18) {
