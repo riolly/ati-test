@@ -1,6 +1,7 @@
 import Head from "next/head";
 import CheckoutCard from "../components/checkout";
 import FormPayment from "../components/form";
+import Layout from "../components/layout";
 
 export default function Home() {
 	const payments = [
@@ -19,7 +20,7 @@ export default function Home() {
 	];
 
 	return (
-		<>
+		<Layout>
 			<Head>
 				<title>Garuda Indonesia - Complete Payment</title>
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -49,7 +50,7 @@ export default function Home() {
 					<CheckoutCard />
 				</div>
 			</div>
-		</>
+		</Layout>
 	);
 }
 
