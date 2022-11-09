@@ -106,7 +106,8 @@ export default function FormPayment() {
 
 	return (
 		<div className="col-span-full lg:col-span-3">
-			<div className="flex flex-col gap-4 px-4 lg:px-12 lg:py-8 h-full bg-white drop-shadow-[-12px_0px_12px_rgba(0,0,0,0.1)] rounded-l-xl lg:rounded-l-none rounded-r-xl">
+				<FormProvider {...formMethods}>
+					<form onSubmit={formMethods.handleSubmit(onSubmit)}>
 				<Section title="Card details">
 					<div className="flex gap-2 items-center text-gray-500 ">
 						<Lock />
@@ -114,8 +115,6 @@ export default function FormPayment() {
 					</div>
 				</Section>
 
-				<FormProvider {...methods}>
-					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="grid grid-cols-6 gap-x-8 gap-y-4 child:w-full">
 							<Input
 								wrapperClassName="col-span-full lg:col-span-3 order-0"
