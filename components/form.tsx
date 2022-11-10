@@ -97,12 +97,13 @@ export default function FormPayment() {
 				target.value = val.slice(0, -1);
 			}
 		} else if (
+			!e.altKey &&
+			!e.ctrlKey &&
 			/[^0-9]/g.test(e.key) &&
 			!["Tab", "ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"].includes(
 				e.key
 			)
 		) {
-			// TODO: command ie. ctrl+r also prevented
 			e.preventDefault();
 		} else if (len <= maxLen - 1) {
 			const format = new RegExp(`(.{${subDigits}})`, "g");
