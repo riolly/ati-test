@@ -87,12 +87,12 @@ export default function FormPayment() {
 		subDigits = 4
 	) => {
 		const target = e.target as HTMLInputElement;
-
 		const val = target.value;
 		const maxLen = target.maxLength;
 		const len = val.length;
 
 		if (e.key === "Backspace") {
+			// TODO: when delete a space doesn't delete a digit
 			if (val[len - 2] === separator) {
 				target.value = val.slice(0, -1);
 			}
@@ -106,6 +106,9 @@ export default function FormPayment() {
 		) {
 			e.preventDefault();
 		} else if (len <= maxLen - 1) {
+			// TODO: edit on the middle still problematic
+			// when last part is 4 digits, number added to the end of the input
+			// when the digits is missing one part
 			const format = new RegExp(`(.{${subDigits}})`, "g");
 
 			target.value = val
