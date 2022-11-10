@@ -93,7 +93,7 @@ export default function FormPayment() {
 		const len = val.length;
 
 		if (e.key === "Backspace") {
-			if (val[len - 2] === " ") {
+			if (val[len - 2] === separator) {
 				target.value = val.slice(0, -1);
 			}
 		} else if (
