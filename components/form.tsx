@@ -130,7 +130,7 @@ export default function FormPayment() {
 								inputMode="numeric"
 								maxLength={19}
 								required
-								placeholder="XXXX XXXX XXXXXXXX "
+								placeholder="XXXX XXXX XXXX XXXX "
 								// onKeyUp={formatNumberOnKeyUp}
 								onKeyDown={formatNumber}
 							/>
