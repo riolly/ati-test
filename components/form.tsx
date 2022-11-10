@@ -48,6 +48,11 @@ export default function FormPayment() {
 			expiredDate: yup
 				.string()
 				.required()
+				.test(
+					"valid-month",
+					"Invalid month (MM/YY)",
+					(value) => !!(value && Number(value?.slice(0, 2)) <= 12)
+				)
 				.length(5, "Not valid date")
 				.label("Expired date"),
 			name: yup.string().required().label("Name"),
@@ -130,14 +135,6 @@ export default function FormPayment() {
 								onKeyDown={formatNumber}
 							/>
 
-							{/* <Input
-								wrapperClassName="col-span-3 lg:col-span-2 order-2"
-								name="expiredDate"
-								label="Expiration Date"
-								type="month"
-								placeholder="month/Year"
-								required
-							/> */}
 							<Input
 								wrapperClassName="col-span-3 lg:col-span-2 order-2"
 								name="expiredDate"
@@ -145,7 +142,6 @@ export default function FormPayment() {
 								type="text"
 								placeholder="MM/YY"
 								inputMode="numeric"
-								valueAsDate
 								maxLength={5}
 								required
 								onKeyDown={(e) => formatNumber(e, "/", 2)}
