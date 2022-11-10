@@ -46,13 +46,9 @@ export default function FormPayment() {
 				.length(3, "Not valid CVC number")
 				.label("CVC"),
 			expiredDate: yup
-				.date()
-				.transform((ori, formattedDate) => {
-					if (formattedDate === "") return null;
-					return ori;
-				})
-				.nullable()
+				.string()
 				.required()
+				.length(5, "Not valid date")
 				.label("Expired date"),
 			name: yup.string().required().label("Name"),
 		})
@@ -80,9 +76,15 @@ export default function FormPayment() {
 	// 	}
 	// };
 
-	const formatNumber = (e: KeyboardEvent<HTMLInputElement>) => {
+	const formatNumber = (
+		e: KeyboardEvent<HTMLInputElement>,
+		separator = " ",
+		subDigits = 4
+	) => {
 		const target = e.target as HTMLInputElement;
+
 		const val = target.value;
+		const maxLen = target.maxLength;
 		const len = val.length;
 
 		if (e.key === "Backspace") {
@@ -92,8 +94,13 @@ export default function FormPayment() {
 		} else if (/[^0-9]/g.test(e.key) && e.key !== "Tab") {
 			// TODO: command ie. ctrl+r also prevented
 			e.preventDefault();
-		} else if (len <= 18) {
-			target.value = val.replace(/[^0-9]/g, "").replace(/(.{4})/g, "$1 ");
+		} else if (len <= maxLen - 1) {
+			const format = new RegExp(`(.{${subDigits}})`, "g");
+
+			target.value = val
+				.replace(/[^0-9]/g, "")
+				.replace(format, `$1${separator}`);
+		} else if (len <= maxLen) {
 		}
 	};
 
@@ -118,18 +125,30 @@ export default function FormPayment() {
 								inputMode="numeric"
 								maxLength={19}
 								required
-								placeholder="XXXX XXXX XXXX XXXX"
+								placeholder="XXXX XXXX XXXXXXXX "
 								// onKeyUp={formatNumberOnKeyUp}
 								onKeyDown={formatNumber}
 							/>
 
-							<Input
+							{/* <Input
 								wrapperClassName="col-span-3 lg:col-span-2 order-2"
 								name="expiredDate"
 								label="Expiration Date"
 								type="month"
 								placeholder="month/Year"
 								required
+							/> */}
+							<Input
+								wrapperClassName="col-span-3 lg:col-span-2 order-2"
+								name="expiredDate"
+								label="Expired Date"
+								type="text"
+								placeholder="MM/YY"
+								inputMode="numeric"
+								valueAsDate
+								maxLength={5}
+								required
+								onKeyDown={(e) => formatNumber(e, "/", 2)}
 							/>
 							<Input
 								wrapperClassName="col-span-3 lg:col-span-1 order-3"
